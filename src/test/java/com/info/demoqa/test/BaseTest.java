@@ -20,7 +20,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        setUpDriver(false);
+        setUpDriver(true);
         DriverHolder.setDriver(driver);
         driver = DriverHolder.getDriver();
 
@@ -76,8 +76,8 @@ public class BaseTest {
         }
     }
 
-   /* @AfterMethod
+    @AfterMethod
     public void tearDown() {
         driver.quit();
-    }*/
+    }
 }

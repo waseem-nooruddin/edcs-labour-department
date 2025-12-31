@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodle Architecture Diagram</title>
+    <style>
+        :root {
+            --blue-header: #dae8fc;
+            --blue-border: #6c8ebf;
+            --red-header: #f8cecc;
+            --red-border: #b85450;
+            --purple-header: #e1d5e7;
+            --purple-border: #9673a6;
+            --green-header: #d5e8d4;
+            --green-border: #82b366;
+            --teal-header: #dae8fc; /* Visually similar to blue/teal mix in image, let's adjust */
+            --teal-border: #6c8ebf;
+            --teal-bg: #dff0f0; /* Custom for Security & Compliance */
+            --teal-border-custom: #5f9ea0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 40px;
+        }
+
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .layer-box {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            background: white;
+            border: 1px solid #ccc;
+        }
+
+        .layer-header {
+            padding: 12px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1em;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .layer-content {
+            padding: 15px;
+            font-size: 0.95em;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin: 0;
+            padding-left: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        /* Specific Styles */
+        /* Presentation */
+        .presentation { border-color: var(--blue-border); }
+        .presentation .layer-header { background-color: var(--blue-header); color: #000; }
+        .presentation .layer-content { background-color: #f5f9ff; }
+
+        /* Security & Delivery */
+        .delivery { border-color: var(--red-border); }
+        .delivery .layer-header { background-color: var(--red-header); color: #000; }
+        .delivery .layer-content { background-color: #fff5f5; }
+
+        /* Application */
+        .app-layer { border-color: var(--purple-border); }
+        .app-layer .layer-header { background-color: var(--purple-header); color: #000; }
+        .app-layer .layer-content { background-color: #fbf5fc; }
+
+        /* Integration */
+        .integration { border-color: var(--green-border); }
+        .integration .layer-header { background-color: var(--green-header); color: #000; }
+        .integration .layer-content { background-color: #f5fcf5; }
+
+        /* Security Compliance */
+        .compliance { border-color: #6d9eeb; }
+        .compliance .layer-header { background-color: #d0e0e3; color: #000; }
+        .compliance .layer-content { background-color: #eaf4f7; }
+
+        /* Operations */
+        .operations { border-color: #6c8ebf; }
+        .operations .layer-header { background-color: #dae8fc; color: #000; }
+        .operations .layer-content { background-color: #f5f9ff; }
+
+        /* Arrow */
+        .arrow {
+            font-size: 24px;
+            color: #555;
+            margin: -5px 0;
+        }
+
+        .list-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px 20px;
+        }
+        .list-grid li {
+            list-style-position: inside;
+        }
+        
+        .full-width-list li {
+             margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="diagram-container">
+
+    <!-- Presentation Layer -->
+    <div class="layer-box presentation">
+        <div class="layer-header">Presentation Layer</div>
+        <div class="layer-content">
+            <ul class="full-width-list">
+                <li>Web Browsers (Desktop / Mobile / Tablet)</li>
+                <li>Responsive UI (Boost Theme HTML5/CSS3)</li>
+                <li>Optional Moodle Mobile App</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+
+    <!-- Security & Delivery Layer -->
+    <div class="layer-box delivery">
+        <div class="layer-header">Security & Delivery Layer</div>
+        <div class="layer-content">
+            <ul class="full-width-list">
+                <li>Secure HTTPS Gateway with TLS</li>
+                <li>Load Balancing</li>
+                <li>IP Filtering & Bot Protection</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+
+    <!-- Application Layer -->
+    <div class="layer-box app-layer">
+        <div class="layer-header">Application Layer – Moodle LMS</div>
+        <div class="layer-content">
+            <ul class="full-width-list">
+                <li>Moodle LMS Core</li>
+                <li>Course Administration • Advanced Assessment</li>
+                <li>Learning Activities (Forums, etc.)</li>
+                <li>Notification & Messaging</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+
+    <!-- Integration & Identity Layer -->
+    <div class="layer-box integration">
+        <div class="layer-header">Integration & Identity Layer</div>
+        <div class="layer-content">
+            <ul class="list-grid" style="list-style-type: disc;">
+                <li>Single Sign-On (SSO)</li>
+                <li>REST API Gateway</li>
+                <li>Automated User Management</li>
+                <li>Bulk Data Import/Export</li>
+                <li style="grid-column: span 2;">Secure Service Accounts</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+
+    <!-- Security & Compliance Architecture -->
+    <div class="layer-box compliance">
+        <div class="layer-header">Security & Compliance Architecture</div>
+        <div class="layer-content">
+            <ul class="list-grid">
+                <li>Role-Based Access Control</li>
+                <li>Encrypted Data in Transit</li>
+                <li style="grid-column: span 2;">Audit Logs</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+
+    <!-- Operations, DevOps & Maintenance Layer -->
+    <div class="layer-box operations">
+        <div class="layer-header">Operations, DevOps & Maintenance Layer</div>
+        <div class="layer-content">
+            <ul class="list-grid">
+                <li>Automated Backups</li>
+                <li>CI/CD Pipelines</li>
+                <li>Disaster Recovery</li>
+                <li>Major Version Upgrades</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
